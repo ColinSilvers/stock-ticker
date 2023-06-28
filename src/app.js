@@ -58,6 +58,20 @@ const App = () => {
     setTicker('')
     setName('')
   }
+
+  const handleClickDeleteStock = () => {
+    const newStocks = [...stocks] ;
+    const arr = newStocks[0];
+    const newArr = [];
+    for(let i = 0; i < arr.length; i++) {
+      if(!(arr[i].props.ticker === ticker || arr[i].props.name === name)) {
+        newArr.push(arr[i]);
+      }
+    }
+    newStocks[0] = newArr;
+    setStocks(newStocks);
+    setTicker('');
+  }
   
 
   return (
@@ -111,6 +125,7 @@ const App = () => {
             value={name}
           />
         <button onClick={handleClickAddStock}>Add Stock</button>
+        <button onClick={handleClickDeleteStock}>Delete Stock</button>
         </p>
       </div>
     </div>
