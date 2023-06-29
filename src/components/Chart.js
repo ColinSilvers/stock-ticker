@@ -54,7 +54,7 @@ class Chart extends Component {
 
   render() {
     return (
-      <div>
+      <div className="chartContainer">
          <Plot
         data={[
           {
@@ -73,9 +73,10 @@ class Chart extends Component {
           },
         ]}
         layout={
-          {width: 1350, height: 500, title: 'Intraday Stock Price Every 5 Minutes',
-          plot_bgcolor: 'black'}
+          {width: 1350, height: 500, title: 'Intraday Stock Price',
+          plot_bgcolor: 'black'
         }
+      }
       />
       </div>
     )

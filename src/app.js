@@ -51,16 +51,21 @@ const App = () => {
   }
   
 
-  const handleClickAddStock = () => {
+  const handleClickAddStock = (event) => {
+    event.preventDefault();
     const newStocks = [...stocks];
+    if({ticker} === null || {name} === null) {
+      console.log('Invalid ticker/name');
+    }
     newStocks.push(<Stock ticker={ticker} name={name}/>)
     setStocks(newStocks);
     setTicker('')
     setName('')
   }
 
-  const handleClickDeleteStock = () => {
-    const newStocks = [...stocks] ;
+  const handleClickDeleteStock = (event) => {
+    event.preventDefault();
+    const newStocks = [...stocks];
     const arr = newStocks[0];
     const newArr = [];
     for(let i = 0; i < arr.length; i++) {
@@ -95,6 +100,7 @@ const App = () => {
         <input 
           type="text"
           placeholder="ticker"
+          autoComplete="off"
           id="chartTicker"
           name="chartTicker"
           onChange={handleChartTickerChange}
@@ -111,6 +117,7 @@ const App = () => {
           <input
             type="text"
             placeholder="ticker"
+            autoComplete="off"
             id="ticker"
             name="ticker"
             onChange={handleTickerChange}
@@ -119,6 +126,7 @@ const App = () => {
           <input
             type="text"
             placeholder="name"
+            autoComplete="off"
             id="name"
             name="name"
             onChange={handleNameChange}

@@ -8,11 +8,27 @@ module.exports = {
     path: path.join(__dirname, 'public')
   },
   module: {
-    rules: [{
+    rules: [
+      {
       loader: 'babel-loader',
       test:/\.js$/,
       exclude: /node_mudles/
-    }]
+    },
+    {
+      test: /\.(png|jpg|gif|json|xml|ico|svg)$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+            outputPath: 'assets',
+            publicPath: '/'
+          }
+        }
+      ]
+    },
+
+  ]
   },
   devServer: {
     static: {

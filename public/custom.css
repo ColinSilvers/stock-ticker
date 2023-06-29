@@ -1,12 +1,73 @@
+#bg {
+  background-size: cover;
+  z-index: -1;
+}
 
 body {
-  background-image: url("../assets/wolf.webp");
-  background-color: rgb(4, 248, 167);
+  background-color: blueviolet;
 }
 
 h1 {
   text-align: center;
+  text-shadow: #555;
+  text-decoration-thickness: 100;
   color: rgb(7, 7, 17);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #04e7dc;
+}
+
+.table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.table td {
+  background-color: #fff;
+}
+
+.table th,
+.table td {
+  color: #333;
+}
+
+.table th {
+  background-color: #f9f9f9;
+  border-bottom-color: #ddd;
+}
+
+.table td {
+  border-bottom-color: #f5f5f5;
+}
+
+.chartContainer {
+  border-color: #dddddd;
+}
+
+h3 {
+  text-align: center;
+  color: rgb(7, 7, 17);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p.link {
+  text-align: center;
+  color: rgb(7, 7, 17);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+  border: 3px solid #555;
 }
 

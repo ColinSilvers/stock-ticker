@@ -13,14 +13,13 @@ class Stock extends Component {
   applyData(data) {
     this.setState({
       data: data[data.length - 2]
-    })
-  }
+     })
+   }
 
   componentDidMount() {
     stockInformation.latestPrice(this.props.ticker, this.applyData.bind(this));
   }
 
-    
   render() {
     return(
       <tr>
