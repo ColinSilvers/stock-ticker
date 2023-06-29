@@ -77,7 +77,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="container">
-        <Table stripped boredered hover variant='dark' size="sm" className="table et-5">
+        <Table className="table-success table-striped table-hover table-bordered" size="lg">
           <thead>
             <tr>
               <th>Ticker</th>

@@ -7,6 +7,10 @@ class Chart extends Component {
     this.state = {
       stockChartXValues: [],
       stockChartYValues: [],
+      close: [],
+      high: [],
+      low: [],
+      open: []
     }
   }
 
@@ -20,6 +24,10 @@ class Chart extends Component {
     let API_CALL = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&outputsize=compact&apikey=${API_KEY}`;
     const stockChartXValuesFunction = [];
     const stockChartYValuesFunction = [];
+    const closeFunction = [];
+    const highFuncion = [];
+    const lowFunction = [];
+    const openFunction = [];
 
     fetch(API_CALL)
     .then((response) => response.json())
@@ -27,11 +35,19 @@ class Chart extends Component {
       console.log(data);
       for(let key in data['Time Series (5min)']) {
         stockChartXValuesFunction.push(key);
-        stockChartYValuesFunction.push(data['Time Series (5min)'][key]['1. open']);
+        openFunction.push(data['Time Series (5min)'][key]['1. open']);
+        closeFunction.push(data['Time Series (5min)'][key]['4. close']);
+        highFuncion.push(data['Time Series (5min)'][key]['2. high']);
+        lowFunction.push(data['Time Series (5min)'][key]['3. low']);
+
       }
       this.setState({
         stockChartXValues: stockChartXValuesFunction,
-        stockChartYValues: stockChartYValuesFunction
+        stockChartYValues: stockChartYValuesFunction,
+        close: closeFunction,
+        high: highFuncion,
+        low: lowFunction,
+        open: openFunction
       });
     })
   }
@@ -42,14 +58,24 @@ class Chart extends Component {
          <Plot
         data={[
           {
-            x: this.state.stockChartXValues,
-            y: this.state.stockChartYValues,
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: {color: 'red'},
+           x: this.state.stockChartXValues,
+           close: this.state.close,
+           decreasing: {line: {color: '#7F7F7F'}}, 
+           high: this.state.high,
+           increasing: {line: {color: '#17BECF'}}, 
+           line: {color: 'rgba(31,119,180,1)'}, 
+           low: this.state.low,
+           open: this.state.open,
+           type: 'candlestick',
+           xaxis: 'x',
+           yaxis: 'y'
+            // marker: {color: 'green'},
           },
         ]}
-        layout={{width: 1350, height: 500, title: 'Intraday Stock Price Every 5 Minutes'}}
+        layout={
+          {width: 1350, height: 500, title: 'Intraday Stock Price Every 5 Minutes',
+          plot_bgcolor: 'black'}
+        }
       />
       </div>
     )
